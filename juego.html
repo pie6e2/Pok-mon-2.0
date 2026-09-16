@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Zombie Shooter</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="game">
+
+        <!-- HUD -->
+        <div id="hud">
+
+            <div>
+                ❤️ Vida:
+                <span id="health">100</span>
+            </div>
+
+            <div>
+                🎯 Puntos:
+                <span id="score">0</span>
+            </div>
+
+            <div>
+                🏆 Récord:
+                <span id="best">0</span>
+            </div>
+
+            <div>
+                🌊 Oleada:
+                <span id="wave">1</span>
+            </div>
+
+        </div>
+
+
+        <!-- JUGADOR -->
+        <div id="player">
+
+            <img
+                src="assents/iconos de mi juego/entrenador-ezgif.com-remove-background.gif"
+                alt="Jugador"
+            >
+
+        </div>
+
+
+        <!-- ENEMIGOS -->
+        <div id="zombies"></div>
+
+
+        <!-- BALAS -->
+        <div id="bullets"></div>
+
+
+        <!-- GAME OVER -->
+        <div id="gameOver">
+
+            <h1>💀 GAME OVER</h1>
+
+            <p>
+                🎯 Puntuación:
+                <span id="finalScore">0</span>
+            </p>
+
+            <p>
+                🌊 Oleada:
+                <span id="finalWave">1</span>
+            </p>
+
+            <button id="restart">
+                🔄 Jugar de nuevo
+            </button>
+
+        </div>
+
+
+        <!-- INSTRUCCIONES -->
+        <div id="instructions">
+
+            <b>W A S D</b> = Mover |
+            <b>Mouse</b> = Apuntar |
+            <b>Click</b> = Disparar |
+            <b>P</b> = Pausar
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

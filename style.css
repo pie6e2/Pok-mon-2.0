@@ -1,0 +1,384 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #110a29;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* =========================
+   JUEGO
+========================= */
+
+#game {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: url("assents/fondo1.jpeg") center/cover no-repeat;
+    background-color: #110a29;
+    cursor: crosshair;
+    transition: background 1s ease;
+}
+
+/* =========================
+   FONDOS
+========================= */
+
+#game.fondo2 {
+    background: url("assents/fondo2.jpeg") center/cover no-repeat;
+}
+
+#game.fondo3 {
+    background: url("assents/fondo3.jpeg") center/cover no-repeat;
+}
+
+#game.fondo4 {
+    background: url("assents/fondo3.jpeg") center/cover no-repeat;
+}
+
+#game.fondo5 {
+    background: url("assents/fondo3.jpeg") center/cover no-repeat;
+}
+
+#game.fondo6 {
+    background: url("assents/fondo3.jpeg") center/cover no-repeat;
+}
+
+#game.fondo7 {
+    background: url("assents/fondo3.jpeg") center/cover no-repeat;
+}
+
+#game.fondo8 {
+    background: url("assents/fondo3.jpeg") center/cover no-repeat;
+}
+
+/* =========================
+   HUD
+========================= */
+
+#hud {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    right: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+
+    z-index: 100;
+    pointer-events: none;
+
+    text-shadow: 2px 2px 4px black;
+}
+
+/* =========================
+   JUGADOR
+========================= */
+
+#player {
+    position: absolute;
+
+    width: 180px;
+    height: 150px;
+
+    z-index: 20;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    user-select: none;
+    pointer-events: none;
+}
+
+#player img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    image-rendering: pixelated;
+}
+
+/* =========================
+   ENEMIGOS
+========================= */
+
+.zombie {
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 10;
+
+    user-select: none;
+    pointer-events: none;
+}
+
+.zombie img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    image-rendering: pixelated;
+}
+
+/* =========================
+   BOSS
+========================= */
+
+.boss {
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 30;
+
+    pointer-events: none;
+    user-select: none;
+}
+
+.boss img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    image-rendering: pixelated;
+}
+
+/* Nombre del boss */
+
+.bossName {
+    position: absolute;
+
+    top: -48px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: white;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    white-space: nowrap;
+
+    text-shadow:
+        2px 2px 4px black,
+        0 0 5px black;
+}
+
+/* =========================
+   VIDA DEL BOSS
+========================= */
+
+.bossHealthBar {
+    position: absolute;
+
+    top: -22px;
+    left: 0;
+
+    width: 170px;
+    height: 14px;
+
+    background: #222;
+
+    border: 2px solid white;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    box-shadow: 0 0 6px black;
+}
+
+.bossHealthFill {
+    width: 100%;
+    height: 100%;
+
+    background: red;
+
+    transition: width 0.1s linear;
+}
+
+/* =========================
+   BALAS
+========================= */
+
+.bullet {
+    position: absolute;
+
+    width: 9px;
+    height: 9px;
+
+    background: #0d21db;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px #0e0aec;
+
+    z-index: 15;
+
+    pointer-events: none;
+}
+
+/* =========================
+   GAME OVER
+========================= */
+
+#gameOver {
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.85);
+
+    display: none;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    z-index: 200;
+
+    text-align: center;
+}
+
+#gameOver h1 {
+    font-size: 60px;
+
+    color: #e74c3c;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 10px black;
+}
+
+#gameOver p {
+    font-size: 24px;
+    margin: 8px;
+}
+
+/* =========================
+   BOTÓN REINICIAR
+========================= */
+
+#restart {
+    margin-top: 25px;
+
+    padding: 15px 35px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #e74c3c;
+
+    color: white;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+#restart:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+
+/* =========================
+   INSTRUCCIONES
+========================= */
+
+#instructions {
+    position: absolute;
+
+    bottom: 15px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: white;
+
+    font-size: 15px;
+
+    background: rgba(0, 0, 0, 0.5);
+
+    padding: 8px 15px;
+
+    border-radius: 8px;
+
+    z-index: 100;
+
+    pointer-events: none;
+
+    text-shadow: 1px 1px 3px black;
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 700px) {
+
+    #hud {
+        font-size: 13px;
+        gap: 8px;
+    }
+
+    #instructions {
+        font-size: 11px;
+        white-space: nowrap;
+    }
+
+    #gameOver h1 {
+        font-size: 40px;
+    }
+
+    #gameOver p {
+        font-size: 18px;
+    }
+
+    #player {
+        width: 130px;
+        height: 130px;
+    }
+
+    .boss {
+        width: 130px;
+        height: 130px;
+    }
+
+    .bossHealthBar {
+        width: 130px;
+    }
+
+    .bossName {
+        font-size: 16px;
+    }
+}
